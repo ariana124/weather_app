@@ -13,8 +13,13 @@ app.get("/", function(req, res) {
         console.log(response.statusCode);
 
         response.on("data", function(data) {
+            // Turns the data that's currently a string into a JSON object.
             const weatherData = JSON.parse(data);
+            // The weather object is an array that contains 1 item which is why we access it using [0].
+            const weatherDescription = weatherData.weather[0].description; 
             console.log(weatherData);
+            console.log("*************************");
+            console.log(weatherDescription);
         })
     });
 
