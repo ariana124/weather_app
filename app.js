@@ -8,7 +8,11 @@ app.listen(3000, function() {
 
 app.get("/", function(req, res) {
 
-    const url = "https://api.openweathermap.org/data/2.5/weather?zip=94612&appid=f6fad539d556a5c0b26ab209c1c2c3c0&units=imperial";
+    const query = "94612";
+    const apiKey = "f6fad539d556a5c0b26ab209c1c2c3c0";
+    const unit = "imperial";
+    const url = `https://api.openweathermap.org/data/2.5/weather?zip=${query}&appid=${apiKey}&units=${unit}`;
+
     https.get(url, function(response) {
         console.log(response.statusCode);
 
