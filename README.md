@@ -1,6 +1,6 @@
 # Weather App
 
-A simple weather web application that displays the current weather in downtown Oakland using the OpenWeather Current Weather Data [API](https://openweathermap.org/api).
+A simple weather web application that displays the current weather in a city depending on the zip code using the OpenWeather Current Weather Data [API](https://openweathermap.org/api).
 
 ## Installation
 
@@ -34,4 +34,4 @@ nodemon app.js
 
 Nodemon is a package that automatically restarts your server when you make and save any changes to the `calculator.js` file. It's a lot more convenient than saving the file, quitting the current session with `Ctrl + C`, and running `node calcultor.js` everytime you make a change and save the file.
 
-Your server should now be running on port 3000, so now you can type `localhost:3000` into your web browser to see the current weather in downtown Oakland, CA.
+Your server should now be running on port 3000, so now you can type `localhost:3000` into your web browser and then enter in your zip code to get your current weather.
