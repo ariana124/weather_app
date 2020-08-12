@@ -15,13 +15,21 @@ app.get("/", function(req, res) {
         response.on("data", function(data) {
             // Turns the data that's currently a string into a JSON object.
             const weatherData = JSON.parse(data);
+            const temp = weatherData.main.temp
             // The weather object is an array that contains 1 item which is why we access it using [0].
-            const weatherDescription = weatherData.weather[0].description; 
-            console.log(weatherData);
-            console.log("*************************");
-            console.log(weatherDescription);
+            const weatherDescription = weatherData.weather[0].description;
+            const city = weatherData.name;
+
+            // One method of sending data while only using one send().
+            //const description = `The weather currently is ${weatherDescription}.`
+            //res.send(`<h1 style="font-family: monospace;">The temperature in ${city} is ${temp} degrees fahrenheit. ${description}</h1>`);
+
+            res.write(`<h1 style="font-family: monospace;">The temperature in ${city} is ${temp} degrees fahrenheit.</h1>`);
+            res.write(`<h2 style="font-family: monospace;">The weather currently is ${weatherDescription}.</h2>`);
+            res.send();
+
         })
     });
 
-    res.sendFile(__dirname + "/index.html");
+    //res.sendFile(__dirname + "/index.html");
 });
