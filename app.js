@@ -1,18 +1,27 @@
 const express = require("express");
 const https = require("https");
+const bodyParser = require("body-parser");
+
 const app = express();
+
+// Necessary code in order to use the body parser.
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.listen(3000, function() {
     console.log("Server is running on port 3000.");
 });
 
 app.get("/", function(req, res) {
+    res.sendFile(__dirname + "/index.html");
+});
 
-    const query = "94612";
+app.post("/", function(req, res) {
+    
+    const query = req.body.zipCode;
     const apiKey = "f6fad539d556a5c0b26ab209c1c2c3c0";
     const unit = "imperial";
     const url = `https://api.openweathermap.org/data/2.5/weather?zip=${query}&appid=${apiKey}&units=${unit}`;
-
+    
     https.get(url, function(response) {
         console.log(response.statusCode);
 
@@ -25,16 +34,11 @@ app.get("/", function(req, res) {
             const city = weatherData.name;
             const icon = weatherData.weather[0].icon;
             const imageURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-
-            // One method of sending data without using write and only one send().
-            //const description = `The weather currently is ${weatherDescription}.`
-            //res.send(`<h1 style="font-family: monospace;">The temperature in ${city} is ${temp} degrees fahrenheit. ${description}</h1>`);
-
+    
             res.write(`<h1 style="font-family: monospace;">The temperature in ${city} is ${temp} degrees fahrenheit.</h1>`);
             res.write(`<h2 style="font-family: monospace;">The weather currently is ${weatherDescription}.</h2>`);
             res.write(`<img src="${imageURL}">`);
             res.send();
-
         })
     });
 });
