@@ -28,7 +28,8 @@ app.post("/", function(req, res) {
         response.on("data", function(data) {
             // Turns the data that's currently a string into a JSON object.
             const weatherData = JSON.parse(data);
-            const temp = weatherData.main.temp
+            // console.log(weatherData);
+            const temp = weatherData.main.temp;
             // The weather object is an array that contains 1 item which is why we access it using [0].
             const weatherDescription = weatherData.weather[0].description;
             const city = weatherData.name;
