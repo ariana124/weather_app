@@ -19,13 +19,16 @@ app.get("/", function(req, res) {
             // The weather object is an array that contains 1 item which is why we access it using [0].
             const weatherDescription = weatherData.weather[0].description;
             const city = weatherData.name;
+            const icon = weatherData.weather[0].icon;
+            const imageURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
-            // One method of sending data while only using one send().
+            // One method of sending data without using write and only one send().
             //const description = `The weather currently is ${weatherDescription}.`
             //res.send(`<h1 style="font-family: monospace;">The temperature in ${city} is ${temp} degrees fahrenheit. ${description}</h1>`);
 
             res.write(`<h1 style="font-family: monospace;">The temperature in ${city} is ${temp} degrees fahrenheit.</h1>`);
             res.write(`<h2 style="font-family: monospace;">The weather currently is ${weatherDescription}.</h2>`);
+            res.write(`<img src="${imageURL}">`);
             res.send();
 
         })
