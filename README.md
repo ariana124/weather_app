@@ -1,6 +1,6 @@
 # Weather App
 
-A simple weather web application that displays the current weather in a city depending on the zip code using the OpenWeather Current Weather Data [API](https://openweathermap.org/api).
+A simple weather web application that displays the current weather in a city depending on the zip code using the [OpenWeather Current Weather Data API](https://openweathermap.org/api).
 
 ## Installation
 
