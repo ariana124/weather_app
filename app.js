@@ -18,7 +18,7 @@ app.get("/", function(req, res) {
 app.post("/", function(req, res) {
     
     const query = req.body.zipCode;
-    const apiKey = "f6fad539d556a5c0b26ab209c1c2c3c0";
+    const apiKey = "";
     const unit = "imperial";
     const url = `https://api.openweathermap.org/data/2.5/weather?zip=${query}&appid=${apiKey}&units=${unit}`;
     
