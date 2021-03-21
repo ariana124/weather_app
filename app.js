@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-// Necessary code in order to use the body parser.
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.listen(3000, function() {
